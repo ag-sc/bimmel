@@ -1,19 +1,25 @@
 package core;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Dataset {
 
-	HashMap<FeatureVector, Integer> instances;
-	
+	List<Instance> instances;
 	public Dataset()
 	{
-		instances = new HashMap<FeatureVector,Integer>();
+		instances = new ArrayList<Instance>();
 	}
 	
-	public void addInstance(FeatureVector vector, int label)
+	public void addInstance(Instance instance)
 	{
-		instances.put(vector, new Integer(label));
+		instances.add(instance);
 	}
+
+	public List<Instance> getInstances()
+	{
+		return instances;
+	}
+	
 	
 }
