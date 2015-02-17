@@ -8,9 +8,10 @@ public class Alphabet {
 	HashMap<Integer,String> InvAlphabet;
 	
 	
-	void Alphabet()
+	public Alphabet()
 	{
 		Alphabet = new HashMap<String,Integer>();
+		InvAlphabet = new HashMap<Integer,String>();
 	}
 	
 	public Integer getOrCreateFeature(String feature)

@@ -1,5 +1,6 @@
 package sc.citec.uni.bielefeld.de.bimmel.learning;
 
+import java.io.IOException;
 import java.util.Set;
 
 import core.Dataset;
@@ -14,8 +15,8 @@ public interface Classifier {
 	
 	public double predict(FeatureVector vector, int label);
 	
-	public void saveModel(String file);
+	public void saveModel(String file) throws IOException;
 	
-	public void loadModel(String file);
+	public void loadModel(String file) throws IOException;
 
 }

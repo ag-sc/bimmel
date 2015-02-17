@@ -21,5 +21,10 @@ public class Dataset {
 		return instances;
 	}
 	
+	public int size()
+	{
+		return instances.size();
+	}
+	
 	
 }

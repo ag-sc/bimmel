@@ -2,6 +2,7 @@ package core;
 
 import java.util.HashMap;
 import java.util.HashMap;
+import java.util.Set;
 
 public class FeatureVector {
 
@@ -21,7 +22,7 @@ public class FeatureVector {
 	{
 		FeatureVector vec = new FeatureVector();
 		
-		HashMap<String,Double> map = vector.getFeatures();
+		HashMap<String,Double> map = vector.getFeatureMap();
 		
 		for (String feature: features.keySet())
 		{
@@ -53,7 +54,7 @@ public class FeatureVector {
 		
 	}
 
-	public HashMap<String, Double> getFeatures() {
+	public HashMap<String, Double> getFeatureMap() {
 		return features;
 	}
 
@@ -68,6 +69,11 @@ public class FeatureVector {
 			return 0.0;
 		}
 
+	}
+	
+	public Set<String> getFeatures()
+	{
+		return features.keySet();
 	}
 	
 
