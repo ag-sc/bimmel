@@ -1,4 +1,4 @@
-package sc.citec.uni.bielefeld.de.bimmel.learning;
+package learning;
 
 import java.io.IOException;
 import java.util.Set;
