@@ -1,4 +1,4 @@
-package learning;
+package de.citec.sc.bimmel.learning;
 
 import java.io.BufferedReader;
 import java.io.FileWriter;
@@ -10,10 +10,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
-import core.Alphabet;
-import core.Dataset;
-import core.FeatureVector;
-import core.Instance;
+import de.citec.sc.bimmel.core.Alphabet;
+import de.citec.sc.bimmel.core.Dataset;
+import de.citec.sc.bimmel.core.FeatureVector;
+import de.citec.sc.bimmel.core.Instance;
 import libsvm.svm;
 import libsvm.svm_model;
 import libsvm.svm_node;
