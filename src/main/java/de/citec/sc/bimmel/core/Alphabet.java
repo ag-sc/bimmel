@@ -1,4 +1,4 @@
-package core;
+package de.citec.sc.bimmel.core;
 
 import java.util.HashMap;
 

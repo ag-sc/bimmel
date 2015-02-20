@@ -1,11 +1,11 @@
-package learning;
+package de.citec.sc.bimmel.learning;
 
 import java.io.IOException;
 import java.util.Set;
 
-import core.Dataset;
-import core.FeatureVector;
-import core.Label;
+import de.citec.sc.bimmel.core.Dataset;
+import de.citec.sc.bimmel.core.FeatureVector;
+import de.citec.sc.bimmel.core.Label;
 
 public interface Classifier {
 	
