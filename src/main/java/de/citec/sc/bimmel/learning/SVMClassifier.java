@@ -38,12 +38,12 @@ public class SVMClassifier implements Classifier {
 		svm_parameter param=new svm_parameter();
         param.svm_type=svm_parameter.C_SVC;
         param.kernel_type=svm_parameter.LINEAR;
-        // param.gamma=0.5;
-        // param.nu=0.5;
-        // param.cache_size=20000;
-        // param.C=3;
-        // param.eps=0.001;
-        // param.p=0.1;
+        param.gamma=0.5;
+        param.nu=0.5;
+        param.cache_size=20000;
+        param.C=20;
+        param.eps=0.001;
+        param.p=0.1;
         
         svm_problem prob=new svm_problem();
         int numTrainingInstances= dataset.size();
