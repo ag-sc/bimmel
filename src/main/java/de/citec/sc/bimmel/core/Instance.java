@@ -2,6 +2,7 @@ package de.citec.sc.bimmel.core;
 
 public class Instance {
 
+
 	FeatureVector vector;
 	Label label;
 	
@@ -27,6 +28,19 @@ public class Instance {
 		this.label = label;
 	}
 	
-	
+	@Override
+	public String toString() {
+		String string = ""+label.getLabel();
+		
+		for (String feature: vector.getFeatureMap().keySet())
+		{
+			string += feature + " => " + vector.getFeatureMap().get(feature);
+		}
+		
+		
+		return string;
+		
+	}
+
 	
 }

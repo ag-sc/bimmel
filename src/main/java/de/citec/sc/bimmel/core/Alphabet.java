@@ -43,5 +43,15 @@ public class Alphabet {
 		return Alphabet.get(feature);
 	}
 
+	public void saveModel(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void loadModel(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 }

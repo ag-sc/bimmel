@@ -1,24 +1,21 @@
 package de.citec.sc.bimmel.learning;
 
-import java.io.BufferedReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
-import de.citec.sc.bimmel.core.Alphabet;
-import de.citec.sc.bimmel.core.Dataset;
-import de.citec.sc.bimmel.core.FeatureVector;
-import de.citec.sc.bimmel.core.Instance;
 import libsvm.svm;
 import libsvm.svm_model;
 import libsvm.svm_node;
 import libsvm.svm_parameter;
 import libsvm.svm_problem;
+import de.citec.sc.bimmel.core.Alphabet;
+import de.citec.sc.bimmel.core.Dataset;
+import de.citec.sc.bimmel.core.FeatureVector;
+import de.citec.sc.bimmel.core.Instance;
 
 public class SVMClassifier implements Classifier {
 
@@ -36,23 +33,17 @@ public class SVMClassifier implements Classifier {
 		
 		Alphabet = new Alphabet();
 		
-		List<Instance> instances = dataset.getInstances();
-		
-		String file = "training";
-		
-		String model = "model";
-				
 		System.out.print("Training SVM\n");
 				
 		svm_parameter param=new svm_parameter();
         param.svm_type=svm_parameter.C_SVC;
-        param.kernel_type=svm_parameter.RBF;
-        param.gamma=0.5;
-        param.nu=0.5;
-        param.cache_size=20000;
-        param.C=1;
-        param.eps=0.001;
-        param.p=0.1;
+        param.kernel_type=svm_parameter.LINEAR;
+        // param.gamma=0.5;
+        // param.nu=0.5;
+        // param.cache_size=20000;
+        // param.C=3;
+        // param.eps=0.001;
+        // param.p=0.1;
         
         svm_problem prob=new svm_problem();
         int numTrainingInstances= dataset.size();
@@ -60,12 +51,12 @@ public class SVMClassifier implements Classifier {
         prob.y=new double[prob.l];
         prob.x=new svm_node[prob.l][];
 
-        // serialize model: svm.svm_save_model(String model_file_name, svm_model model) 
-        // load model: svm_model model = svm.svm_load_model("filename");
-        
         int i = 0;
         
         for (Instance instance: dataset.getInstances()){
+        	
+        	System.out.print(instance+"\n");
+        	
             HashMap<String,Double> tmp= instance.getVector().getFeatureMap();
             prob.x[i]=new svm_node[tmp.keySet().size()];
             int indx=0;
@@ -81,7 +72,7 @@ public class SVMClassifier implements Classifier {
             
             i++;
         }
-
+        
         Model = svm.svm_train(prob,param);
 
 
@@ -132,12 +123,17 @@ public class SVMClassifier implements Classifier {
 	public void saveModel(String file) throws IOException {
 		
         svm.svm_save_model(file, Model); 
+        Alphabet.saveModel(file+".alphabet");
 		
 	}
 
 	@Override
 	public void loadModel(String file) throws IOException {
 		Model = svm.svm_load_model(file);
+		
+		Alphabet = new Alphabet();
+		Alphabet.loadModel(file+".alphabet");
+		
 		
 	}
 	
