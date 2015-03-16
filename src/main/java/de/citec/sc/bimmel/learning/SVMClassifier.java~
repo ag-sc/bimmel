@@ -88,12 +88,10 @@ public class SVMClassifier implements Classifier {
 		
 		List<Integer> intFeatures = new ArrayList<Integer>();
 	
-		for (String feature : features) {
-        	    Integer i = Alphabet.getIndex(feature);
-        	    if (i != null) {
-        	        intFeatures.add(i);
-	            }
-        	}
+		for (String feature: features)
+		{
+			intFeatures.add(Alphabet.getIndex(feature));
+		}
 		
 		Collections.sort(intFeatures);	
 		
