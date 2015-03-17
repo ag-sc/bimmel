@@ -148,7 +148,7 @@ public class SVMClassifier implements Classifier {
 		if (label > Model.nr_class) {
 		    return 0;
 		}
-		return prob_estimates[label - 1];
+		return prob_estimates[label];
 	}
 
 	@Override
