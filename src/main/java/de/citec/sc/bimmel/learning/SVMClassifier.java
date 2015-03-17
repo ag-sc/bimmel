@@ -117,8 +117,37 @@ public class SVMClassifier implements Classifier {
 
 	@Override
 	public double predict(FeatureVector vector, int label) {
-		// TODO Auto-generated method stub
-		return 0;
+		Set<String> features = vector.getFeatures();
+
+		List<Integer> intFeatures = new ArrayList<Integer>();
+
+		for (String feature : features) {
+		    Integer i = Alphabet.getIndex(feature);
+		    if (i != null) {
+		        intFeatures.add(i);
+		    }
+		}
+
+		Collections.sort(intFeatures);
+
+		svm_node[] nodes = new svm_node[intFeatures.size()];
+
+		int ni = 0;
+
+		for (Integer index : intFeatures) {
+		    nodes[ni] = new svm_node();
+		    nodes[ni].value = vector.getValueOfFeature(Alphabet.getFeature(index));
+		    nodes[ni].index = index.intValue();
+		    ni++;
+		}
+
+		double[] prob_estimates = new double[Model.nr_class];
+
+		svm.svm_predict_probability(Model, nodes, prob_estimates);
+		if (label > Model.nr_class) {
+		    return 0;
+		}
+		return prob_estimates[label - 1];
 	}
 
 	@Override
