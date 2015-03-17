@@ -44,6 +44,7 @@ public class SVMClassifier implements Classifier {
         param.C=20;
         param.eps=0.001;
         param.p=0.1;
+	param.probability = 1;
         
         svm_problem prob=new svm_problem();
         int numTrainingInstances= dataset.size();
