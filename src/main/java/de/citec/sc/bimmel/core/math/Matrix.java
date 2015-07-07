@@ -18,6 +18,34 @@ public abstract class Matrix extends MathBase {
 	public Vector getRow(int row) {throw new UnsupportedOperationException("not implemented");}
 	
 	/**
+	 * Copies matrix elements from the given row to the destination buffer
+	 * @param row row to copy
+	 * @param data destination buffer
+	 * @param offset first position in data to copy the rows elements to
+	 */
+	public void copyRowTo(int row, double[] data, int offset) {
+		if (data.length -offset < getCols()) throw new IllegalArgumentException("data array is not large enough to store " + getCols() + " elements");
+		
+		//generic implementation using the iterator. Fast for sparse matrices, for dense matrices use arraycopy
+		DoubleIterator it = rowIterator(row);
+		int index = offset;
+		while (it.hasNext()) {
+			data[index] = it.next();
+			++index;
+		}
+	}
+	
+	/**
+	 * Copies matrix elements from the given row to the destination buffer
+	 * @param row row to copy
+	 * @param data destination buffer
+	 */
+	public void copyRowTo(int row, double[] data) {
+		copyRowTo(row, data, 0);
+	}
+	
+	
+	/**
 	 * Get an efficient look-forward iterator of the given matrix row
 	 * @param row Matrix row to iterate over
 	 * @return Iterator
