@@ -11,14 +11,14 @@ import de.citec.sc.bimmel.core.math.Vector;
  * Iterator gives the best performance for a linear scan.
  * @author Maximilian Panzner
  */
-public class SparseVector extends Vector {
+public class SparseVector64F extends Vector {
 	
 	double[] data;
 	int[] indices;  
 	int length;
 	
 	
-	public SparseVector(double[] array) {
+	public SparseVector64F(double[] array) {
 		this.length = array.length;
 		//count non zeros
 		int nonZeroCount = 0;

@@ -8,8 +8,8 @@ import org.junit.Test;
 
 import de.citec.sc.bimmel.core.math.DoubleIterator;
 import de.citec.sc.bimmel.core.math.Vector;
-import de.citec.sc.bimmel.core.math.impl.SparseMatrix;
-import de.citec.sc.bimmel.core.math.impl.SparseVector;
+import de.citec.sc.bimmel.core.math.impl.SparseMatrix64F;
+import de.citec.sc.bimmel.core.math.impl.SparseVector64F;
 
 public class VectorTests extends TestCase {
 
@@ -47,7 +47,7 @@ public class VectorTests extends TestCase {
 		
 		for (int iteration = 0; iteration < iterations; ++iteration) {
 			fillSparseMatrix(matrix, nonZeroFrac);
-			SparseMatrix sm = new SparseMatrix(matrix);
+			SparseMatrix64F sm = new SparseMatrix64F(matrix);
 			assertTrue(sm.getRows() == matrix.length);
 			assertTrue(sm.getCols() == matrix[0].length);
 			
@@ -74,7 +74,7 @@ public class VectorTests extends TestCase {
 		double[] data = new double[1000];
 		for (int iteration = 0; iteration < iterations; ++iteration) {
 			fillSparseVector(data, nonZeroFrac);
-			Vector sv = new SparseVector(data);
+			Vector sv = new SparseVector64F(data);
 			assertEquals(data.length, sv.getLength());
 			for (int i = 0; i < sv.getLength(); ++i) {
 				assertEquals(data[i], sv.get(i));
@@ -91,7 +91,7 @@ public class VectorTests extends TestCase {
 		double[] data = new double[1000];
 		for (int iteration = 0; iteration < iterations; ++iteration) {
 			fillSparseVector(data, nonZeroFrac);
-			Vector sv = new SparseVector(data);
+			Vector sv = new SparseVector64F(data);
 			DoubleIterator dit = sv.iterate();
 			assertEquals(data.length, sv.getLength());
 			checkIterator(data, dit);

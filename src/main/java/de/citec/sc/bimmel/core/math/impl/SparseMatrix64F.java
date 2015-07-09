@@ -10,7 +10,7 @@ import de.citec.sc.bimmel.core.math.Vector;
  * @author Maximilian Panzner
  *
  */
-public class SparseMatrix extends Matrix {
+public class SparseMatrix64F extends Matrix {
 	
 	private int nonZeroElements = 0;
 	
@@ -25,7 +25,7 @@ public class SparseMatrix extends Matrix {
 	 * @param data 2dim array of matrix elements [row][col]
 	 * @throws ArrayIndexOutOfBoundsException if the given Matrix is empty
 	 */
-	public SparseMatrix(double[][] data) {
+	public SparseMatrix64F(double[][] data) {
 		super(data.length, data[0].length);
 		for (int row = 0; row < getRows(); ++row) {
 			for (int col = 0; col < getCols(); ++col) {
